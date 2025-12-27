@@ -1,55 +1,50 @@
-rows=[set() for _ in range (9)]
-cols=[set() for _ in range (9)]
-boxes=[set() for _ in range (9)]
-board=[]
-val=board[rows][cols]
-def isSafe(board,rows,cols):
-       for i in range(9):
-            for j in range(9):
-                val = board[i][j]
-                
-                if val == '.':
-                    continue
-                
-                
-                if val in rows[i]:
-                    return False
-                rows[i].add(val)
-                
-                # check column
-                if val in cols[j]:
-                    return False
-                cols[j].add(val)
-                
-                # check 3x3 box
-                box_index = (i // 3) * 3 + (j // 3)
-                if val in boxes[box_index]:
-                    return False
-                boxes[box_index].add(val)
+board=[["5","3",".",".","7",".",".",".","."],
+["6",".",".","1","9","5",".",".","."],
+[".","9","8",".",".",".",".","6","."],
+["8",".",".",".","6",".",".",".","3"],
+["4",".",".","8",".","3",".",".","1"],
+["7",".",".",".","2",".",".",".","6"],
+[".","6",".",".",".",".","2","8","."],
+[".",".",".","4","1","9",".",".","5"],
+[".",".",".",".","8",".",".","7","9"]]
+def solveSudoku(board):
+    def isSafe(r,c,num):
+        for i in range(9):
+         if board[r][i]==num:
+            return False
         
+        for i in range(9):
+         if board[i][c]==num:
+            return False
+        startRow=(r//3)*3
+        startCol=(c//3)*3
+        for i in range(startRow,startRow+3):
+         for j in range(startCol,startCol+3):
+            if board[i][j]==num:
+                return False
         return True
-             
-def sudokuSolver(board,rows,cols):
-    if(rows==9):
-        return True
-    nxtrow=rows
-    nxtcol=cols+1
-    if(rows==9):
-        rows=rows+1
-        cols=0
-    if(val!="."):
-        return sudokuSolver(board,nxtrow,nxtcol)
-    for digit in range (1,10):
-        if (isSafe(board,rows,cols,digit)):
-            board[rows][cols]=digit
-            if (sudokuSolver(board)):
-                return True
-            board[rows][cols]="."
-        return false
+    def solve():
+          for r in range(9):
+             for c in range(9):
+                if board[r][c]==".":
+                   for num in "123456789":
+                      if isSafe(r,c,num):
+                         board[r][c]=num
+                         if solve():
+                            return True
+                         board[r][c]="."
+                   return False
+          return True
+    solve()
+solveSudoku(board)
+for row in board:
+    print(row)
+
+       
+
+
     
-            
+
+        
+
     
-
-
-
-
