@@ -1,34 +1,24 @@
 words=["eat","tea","tan","ate","nat","bat"]
-MAX_CHAR = 26  # number of letters in the alphabet
-
 def getHash(word):
-    freq = [0] * MAX_CHAR  # initialize frequency array
-    
-    # Count frequency of each letter
+    freq=[0]*26
     for ch in word:
-        index = ord(ch) - ord('a')  # find position in alphabet
-        freq[index] += 1
-    
-    # Convert frequency array to string with '$' separator
-    key = ""
+        index=ord(ch)-ord('a')
+        freq[index]+=1
+    key=""
     for count in freq:
-        key += str(count) + "$"
-    
+        key+=str(count)+"$"
     return key
-def groupAnagrams(words):
-    result = []      # list to hold groups
-    hashmap = {}     # key -> index in result list
-    
+def groupAnagram(words):
+    result=[]
+    hashmap={}
     for word in words:
-        key = getHash(word)   # get the fingerprint
-        
+        key=getHash(word)
         if key not in hashmap:
-            # new group
-            hashmap[key] = len(result)
+            hashmap[key]=len(result)
             result.append([])
-        
-        # add word to its group
         result[hashmap[key]].append(word)
-    
+        
     return result
-print(groupAnagrams(words))
+print(groupAnagram(words))
+
+
