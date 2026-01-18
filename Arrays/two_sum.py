@@ -4,9 +4,9 @@ def two_sum(arr,target):
     n=len(arr)
     d={}
     for i,j in enumerate(arr):
-        curr=target-i
+        curr=target-j
         if curr in d:
-            return (d[curr],j)
-        d[i]=j
+            return (d[curr],i)
+        d[j]=i
 
 print(two_sum(arr,target))
