@@ -8,7 +8,7 @@ class Solution:
         dist = [INF] * n
         visited = [False] * n
         dist[0] = 0
-        heap = [(0, 0)]  # (Distance, Node)
+        heap = [(0, 0)]
 
         while heap:
             cur_dist, x = heapq.heappop(heap)
@@ -21,7 +21,7 @@ class Solution:
                 continue
             visited[x] = True
 
-            # relaxing neighbors
+
             for y, w in g[x]:
                 new_dist = cur_dist + w
                 if new_dist < dist[y]:
