@@ -1,3 +1,4 @@
+from collections import defaultdict
 class Solution:
     def longestBalanced(self, s) :
         n = len(s)
