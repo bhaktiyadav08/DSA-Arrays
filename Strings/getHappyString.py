@@ -1,5 +1,5 @@
 class Solution:
-    def getHappyString(self, n: int, k: int) -> str:
+    def getHappyString(self, n, k):
         current_string = ""
         happy_strings = []
         # Generate all happy strings of length n
