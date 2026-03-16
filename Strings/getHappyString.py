@@ -27,5 +27,6 @@ class Solution:
 
             # Recursively generate the next character
             self.generate_happy_strings(
-                n, current_string + current_char, happy_strings
+                # n, cwerurrent_string + current_char, happy_strings
             )
+ 
