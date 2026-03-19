@@ -1,5 +1,5 @@
 class Solution:
-    def largestSubmatrix(self, matrix: List[List[int]]) -> int:
+    def largestSubmatrix(self, matrix: list[int]) -> int:
         m = len(matrix)
         n = len(matrix[0])
         ans = 0
