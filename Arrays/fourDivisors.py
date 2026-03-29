@@ -6,7 +6,7 @@ def fourDivisors(nums):
         n=int(num**0.5)
         for i in range(1,n+1):
             if num%i ==0:
-                res.append(i)
+                res.append(i)                    
                 if i!=(num//i):
                     res.append(num//i)
         if len(res)==4:
