@@ -1,22 +1,12 @@
-# Definition for singly-linked list.
-# class ListNode:
-#     def __init__(self, val=0, next=None):
-#         self.val = val
-#         self.next = next
+class listnode:
+    def __init__(self,val=0,next=None):
+        self.val=val
+        self.next=next
+head=[3,5,6,8,3]
+mid=len(head)//2
 
-class Solution:
-    def deleteMiddle(self, head: Optional[ListNode]) -> Optional[ListNode]:
-        if not head.next:
-            return None
 
-        slow = head
-        fast = head
-        prev = None
 
-        while fast and fast.next:
-            prev = slow
-            slow = slow.next
-            fast = fast.next.next
 
-        prev.next = slow.next
-        return head
+
+    
