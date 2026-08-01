@@ -1,20 +1,19 @@
 nums=[1,-1,0]
 k=0
 def subarraySum(nums,k):
-    res=[]
+    d={0:1}
+    prefix=0
+    count=0
     for i in range(len(nums)):
-        if nums[i]==k:
-            res.append([nums[i]])
-        else:
-            sum=nums[i]
-            j=i
-            while(sum!=k and j!=len(nums)):
-                sum+=nums[j]
-                j+=1
-            if sum==k:
-                res.append(nums[i:j])
-    return res
+        prefix+=nums[i]
+        if (prefix-k) in d:
+            count+=d[prefix-k]
+        d[prefix]=d.get(prefix,0)+1
+    return count
 print(subarraySum(nums,k))
+
+            
+
 
 
                 
